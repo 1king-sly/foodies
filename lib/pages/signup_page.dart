@@ -14,7 +14,7 @@ class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade300,
+      backgroundColor: const Color(0xFFFEFEFF),
       resizeToAvoidBottomInset: false,
       body: Stack(
         children: [
@@ -54,7 +54,7 @@ class _SignupPageState extends State<SignupPage> {
                           width: 200,
                           decoration: const BoxDecoration(
                             image: DecorationImage(
-                              image: AssetImage('assets/images/Logo.png'),
+                              image: AssetImage('assets/images/logo.png'),
                               fit: BoxFit.cover,
                             ),
                           ),

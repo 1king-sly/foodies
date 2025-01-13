@@ -5,7 +5,7 @@ void main() {
   runApp(MaterialApp(
     title: 'Foodies',
     theme: ThemeData(
-      colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
+      colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFFFEFEFF)),
       useMaterial3: true,
     ),
     home: const IntroScreens(),
