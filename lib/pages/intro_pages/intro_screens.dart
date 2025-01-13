@@ -18,6 +18,7 @@ class _IntroScreensState extends State<IntroScreens> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       body: Stack(children: [
         PageView(
@@ -73,3 +74,4 @@ class _IntroScreensState extends State<IntroScreens> {
     );
   }
 }
+
