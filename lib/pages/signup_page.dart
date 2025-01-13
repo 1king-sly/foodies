@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:foodies/constants/constants.dart';
-import 'package:foodies/pages/signup_page.dart';
+import 'package:foodies/pages/login_page.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class SignupPage extends StatefulWidget {
+  const SignupPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignupPage> createState() => _SignupPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignupPageState extends State<SignupPage> {
   bool isObscured = true;
   @override
   Widget build(BuildContext context) {
@@ -60,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         const Text(
-                          "Login To Your Account",
+                          "Create an Account",
                           style: TextStyle(
                             fontSize: 22,
                             fontWeight: FontWeight.bold,
@@ -70,8 +70,32 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 const SizedBox(height: 30),
                 TextField(
+                  decoration: InputDecoration(
+                    prefixIcon: const Icon(Icons.person, color: primaryColor),
+                    contentPadding: const EdgeInsets.all(15),
+                    hintText: "Username",
+                    hintStyle: TextStyle(
+                      color: Colors.grey.shade500,
+                      fontSize: 16,
+                    ),
+                    filled: true,
+                    fillColor: Colors.white,
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey.shade300),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(20))),
+                    focusedBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: primaryColor),
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 30),
+                TextField(
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
+                    prefixIcon:
+                        const Icon(Icons.email_outlined, color: primaryColor),
                     contentPadding: const EdgeInsets.all(15),
                     hintText: "Email",
                     hintStyle: TextStyle(
@@ -94,6 +118,8 @@ class _LoginPageState extends State<LoginPage> {
                 TextField(
                   obscureText: isObscured,
                   decoration: InputDecoration(
+                    prefixIcon:
+                        const Icon(Icons.lock_outline, color: primaryColor),
                     contentPadding: const EdgeInsets.all(15),
                     hintText: "Password",
                     hintStyle: TextStyle(
@@ -123,85 +149,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 20),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Divider(
-                      thickness: 2,
-                      color: Colors.black,
-                      height: 5,
-                    ),
-                    Text('Or Continue With'),
-                    Divider(),
-                  ],
-                ),
-                const SizedBox(height: 20),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Container(
-                        padding: const EdgeInsets.all(12.0),
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                        ),
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Container(
-                                  height: 20,
-                                  width: 20,
-                                  decoration: const BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      image: DecorationImage(
-                                        image: AssetImage(
-                                            'assets/images/facebook.png'),
-                                        fit: BoxFit.cover,
-                                      ))),
-                              const Text("Facebook")
-                            ]),
-                      ),
-                    ),
-                    const SizedBox(width: 30),
-                    Expanded(
-                      child: Container(
-                        padding: const EdgeInsets.all(12.0),
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                        ),
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Container(
-                                height: 20,
-                                width: 20,
-                                decoration: const BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  image: DecorationImage(
-                                    image:
-                                        AssetImage('assets/images/google.png'),
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ),
-                              const Text("Google")
-                            ]),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(width: 30),
-                const Text(
-                  "Forgot Your Password?",
-                  style: TextStyle(
-                    color: primaryColor,
-                    decoration: TextDecoration.underline,
-                    decorationColor: primaryColor,
-                  ),
-                ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 30),
                 Container(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 40.0, vertical: 5),
@@ -219,7 +167,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: TextButton(
                     onPressed: () {},
                     child: const Text(
-                      "Login",
+                      "Sign Up",
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 18,
@@ -227,15 +175,15 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 30),
                 GestureDetector(
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
                         maintainState: false,
-                        builder: (context) => const SignupPage()));
+                        builder: (context) => const LoginPage()));
                   },
                   child: const Text(
-                    "Don't have an account? Sign up",
+                    "Already have an account? Login",
                     style: TextStyle(
                       color: primaryColor,
                       decoration: TextDecoration.underline,
