@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:foodies/pages/location_page.dart';
 import 'package:image_picker/image_picker.dart';
 
 class UploadPhoto extends StatefulWidget {
@@ -43,6 +44,7 @@ class _UploadPhotoState extends State<UploadPhoto> {
               Padding(
                 padding: const EdgeInsets.all(15),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(children: [
                       Container(
@@ -71,10 +73,10 @@ class _UploadPhotoState extends State<UploadPhoto> {
                       height: 129,
                       child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Fill in your bio to get started',
+                              'Upload Your Photo Profile',
                               style: TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.bold,
@@ -145,8 +147,6 @@ class _UploadPhotoState extends State<UploadPhoto> {
                                     getImage(ImageSource.camera);
                                   },
                                   child: Container(
-                                    height: 100,
-                                    width: 100,
                                     decoration: BoxDecoration(
                                       image: DecorationImage(
                                           image: FileImage(galleryFile!),
@@ -177,7 +177,14 @@ class _UploadPhotoState extends State<UploadPhoto> {
                     ),
                   ),
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: galleryFile == null
+                        ? null
+                        : () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) => const LocationPage()),
+                            );
+                          },
                     child: const Text(
                       "Next",
                       style: TextStyle(
