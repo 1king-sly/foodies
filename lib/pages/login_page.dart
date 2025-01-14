@@ -15,31 +15,29 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade300,
+      backgroundColor: Colors.grey.shade50,
       resizeToAvoidBottomInset: false,
       body: Stack(
         children: [
-          Container(
-            width: double.infinity,
-            height: double.infinity,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/pattern2.jpg'),
-                fit: BoxFit.cover,
-              ),
+    Container(
+          width: double.infinity,
+          height: 200,
+          decoration: BoxDecoration(
+            image: const DecorationImage(
+              image: AssetImage('assets/images/pattern2.jpg'),
+              fit: BoxFit.cover,
             ),
-            foregroundDecoration: const BoxDecoration(
-              // color: Color.fromARGB(50, 21, 190, 120),
-              gradient: LinearGradient(
-                begin: Alignment(0, -1),
-                end: Alignment(0, -0.2),
-                colors: [
-                  Color.fromARGB(5, 21, 190, 120),
-                  Colors.white,
-                ],
-              ),
+            gradient: LinearGradient(
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+              colors: [
+                Colors.grey.shade100,
+                // Colors.white,
+                Colors.white,
+              ],
             ),
           ),
+        ),
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.all(20),

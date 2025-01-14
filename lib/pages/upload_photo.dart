@@ -11,7 +11,7 @@ class UploadPhoto extends StatefulWidget {
 }
 
 class _UploadPhotoState extends State<UploadPhoto> {
-   File? galleryFile;
+  File? galleryFile;
   final picker = ImagePicker();
   @override
   Widget build(BuildContext context) {
@@ -91,8 +91,72 @@ class _UploadPhotoState extends State<UploadPhoto> {
                             )
                           ]),
                     ),
-                    const SizedBox(height: 15),
-  
+                    const SizedBox(height: 30),
+                    Container(
+                      child: galleryFile == null
+                          ? Column(children: [
+                              Container(
+                                width: double.infinity,
+                                height: 130,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey.shade50,
+                                  borderRadius: const BorderRadius.all(
+                                    Radius.circular(10),
+                                  ),
+                                ),
+                                child: Center(
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      getImage(ImageSource.gallery);
+                                    },
+                                    child: Image.asset(
+                                        'assets/images/gallery.png'),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 15),
+                              Container(
+                                width: double.infinity,
+                                height: 130,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey.shade50,
+                                  borderRadius: const BorderRadius.all(
+                                    Radius.circular(10),
+                                  ),
+                                ),
+                                child: Center(
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      getImage(ImageSource.camera);
+                                    },
+                                    child:
+                                        Image.asset('assets/images/camera.png'),
+                                  ),
+                                ),
+                              ),
+                            ])
+                          : Container(
+                              width: double.infinity,
+                              height: 200,
+                              color: Colors.grey.shade50,
+                              child: Center(
+                                child: GestureDetector(
+                                  onTap: () {
+                                    getImage(ImageSource.camera);
+                                  },
+                                  child: Container(
+                                    height: 100,
+                                    width: 100,
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                          image: FileImage(galleryFile!),
+                                          fit: BoxFit.cover),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                    ),
                   ],
                 ),
               ),
@@ -128,6 +192,24 @@ class _UploadPhotoState extends State<UploadPhoto> {
           ),
         ),
       ]),
+    );
+  }
+
+  Future getImage(
+    ImageSource img,
+  ) async {
+    final pickedFile = await picker.pickImage(source: img);
+    XFile? xfilePick = pickedFile;
+
+    setState(
+      () {
+        if (xfilePick != null) {
+          galleryFile = File(pickedFile!.path);
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(// is this context <<<
+              const SnackBar(content: Text('Nothing is selected')));
+        }
+      },
     );
   }
 }

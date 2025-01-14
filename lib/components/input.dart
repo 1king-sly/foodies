@@ -34,7 +34,7 @@ class _InputComponentState extends State<InputComponent> {
             fontSize: 16,
           ),
           filled: true,
-          fillColor: Colors.grey.shade100,
+          fillColor: Colors.white,
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.grey.shade300),
               borderRadius: const BorderRadius.all(Radius.circular(20))),

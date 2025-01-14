@@ -13,7 +13,7 @@ class _BioPageState extends State<BioPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey.shade50,
       body: Stack(children: [
         Container(
           width: double.infinity,

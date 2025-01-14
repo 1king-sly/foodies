@@ -20,20 +20,18 @@ class _SignupPageState extends State<SignupPage> {
         children: [
           Container(
             width: double.infinity,
-            height: double.infinity,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
+            height: 200,
+            decoration: BoxDecoration(
+              image: const DecorationImage(
                 image: AssetImage('assets/images/pattern2.jpg'),
                 fit: BoxFit.cover,
               ),
-            ),
-            foregroundDecoration: const BoxDecoration(
-              // color: Color.fromARGB(50, 21, 190, 120),
               gradient: LinearGradient(
-                begin: Alignment(0, -1),
-                end: Alignment(0, -0.2),
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
                 colors: [
-                  Color.fromARGB(5, 21, 190, 120),
+                  Colors.grey.shade100,
+                  // Colors.white,
                   Colors.white,
                 ],
               ),
