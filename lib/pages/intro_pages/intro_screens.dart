@@ -56,7 +56,7 @@ class _IntroScreensState extends State<IntroScreens> {
                   lastPage
                       ? TextButton(
                           onPressed: () {
-                            Navigator.of(context).push(
+                            Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
                                   builder: (context) => const LoginPage()),
                             );
@@ -74,4 +74,3 @@ class _IntroScreensState extends State<IntroScreens> {
     );
   }
 }
-

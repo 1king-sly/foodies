@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodies/constants/constants.dart';
+import 'package:foodies/pages/bio_page.dart';
 import 'package:foodies/pages/signup_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -192,16 +193,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ],
                 ),
-                const SizedBox(width: 30),
-                const Text(
-                  "Forgot Your Password?",
-                  style: TextStyle(
-                    color: primaryColor,
-                    decoration: TextDecoration.underline,
-                    decorationColor: primaryColor,
-                  ),
-                ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 30),
                 Container(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 40.0, vertical: 5),
@@ -217,7 +209,12 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                            builder: (context) => const BioPage()),
+                      );
+                    },
                     child: const Text(
                       "Login",
                       style: TextStyle(
