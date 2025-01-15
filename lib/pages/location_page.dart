@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 
 class LocationPage extends StatefulWidget {
   const LocationPage({super.key});
@@ -8,6 +11,71 @@ class LocationPage extends StatefulWidget {
 }
 
 class _LocationPageState extends State<LocationPage> {
+  Future<Position> _determinePosition() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+    String locationMessage = "Location not set";
+
+    // Test if location services are enabled.
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      // Location services are not enabled don't continue
+      // accessing the position and request users of the
+      // App to enable the location services.
+      setState(() {
+        locationMessage = "Location services are disabled.";
+      });
+
+      return Future.error('Location services are disabled.');
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        // Permissions are denied, next time you could try
+        // requesting permissions again (this is also where
+        // Android's shouldShowRequestPermissionRationale
+        // returned true. According to Android guidelines
+        // your App should show an explanatory UI now.
+        setState(() {
+          locationMessage = "Location permission denied.";
+        });
+        return Future.error('Location permissions are denied');
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      // Permissions are denied forever, handle appropriately.
+      setState(() {
+        locationMessage =
+            "Location permissions are permanently denied. Please enable them in settings.";
+      });
+      return Future.error(
+          'Location permissions are permanently denied, we cannot request permissions.');
+    }
+
+    // When we reach here, permissions are granted and we can
+    // continue accessing the position of the device.
+
+    const LocationSettings locationSettings = LocationSettings(
+      accuracy: LocationAccuracy.high,
+      distanceFilter: 100,
+    );
+
+    Position position =
+        await Geolocator.getCurrentPosition(locationSettings: locationSettings);
+
+    setState(() {
+      locationMessage =
+          "Latitude: ${position.latitude}, Longitude: ${position.longitude}";
+    });
+
+    debugPrint(locationMessage);
+
+    return position;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -141,7 +209,7 @@ class _LocationPageState extends State<LocationPage> {
                                   )),
                               child: Center(
                                 child: TextButton(
-                                    onPressed: () {},
+                                    onPressed: _determinePosition,
                                     child: const Text(
                                       "Set Location",
                                       style: TextStyle(
