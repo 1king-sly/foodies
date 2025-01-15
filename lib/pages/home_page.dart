@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:foodies/components/nearest_restaurants.dart';
-import 'package:foodies/components/popular_menu.dart';
-import 'package:foodies/components/popular_restaurants.dart';
 import 'package:foodies/constants/constants.dart';
 import 'package:foodies/pages/home.dart';
 import 'package:foodies/pages/nearest_restaurant_page.dart';
@@ -43,126 +40,133 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.grey.shade50,
       body: SingleChildScrollView(
-        child: SizedBox(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Search Bar
-
-              Container(
-                padding: const EdgeInsets.all(5),
-                width: double.infinity,
-                height: 200,
-                decoration: BoxDecoration(
-                  image: const DecorationImage(
-                    image: AssetImage('assets/images/pattern2.jpg'),
-                    fit: BoxFit.cover,
-                  ),
-                  gradient: LinearGradient(
-                    begin: Alignment.topRight,
-                    end: Alignment.bottomLeft,
-                    colors: [
-                      Colors.grey.shade100,
-                      // Colors.white,
-                      Colors.white,
-                    ],
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
+        child: Column(
+          children: [
+            SizedBox(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Search Bar
+            
+                  Container(
+                    padding: const EdgeInsets.all(5),
+                    width: double.infinity,
+                    height: 200,
+                    decoration: BoxDecoration(
+                      image: const DecorationImage(
+                        image: AssetImage('assets/images/pattern2.jpg'),
+                        fit: BoxFit.cover,
+                      ),
+                      gradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: [
+                          Colors.grey.shade100,
+                          // Colors.white,
+                          Colors.white,
+                        ],
+                      ),
+                    ),
+                    child: SafeArea(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16.0, vertical: 2),
+                        child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const SizedBox(
-                                width: 233,
-                                height: 82,
-                                child: Text(
-                                  "Find Your Favorite Food",
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 31),
-                                  maxLines: 3,
-                                ),
-                              ),
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: const BorderRadius.all(
-                                    Radius.circular(15),
-                                  ),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.shade300,
-                                      blurRadius: 15.0, // soften the shadow
-                                      spreadRadius: 5.0, //extend the shadow
-                                      offset: const Offset(
-                                        5.0, // Move to right 5  horizontally
-                                        5.0, // Move to bottom 5 Vertically
+                              Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    const SizedBox(
+                                      width: 233,
+                                      height: 82,
+                                      child: Text(
+                                        "Find Your Favorite Food",
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 31),
+                                        maxLines: 3,
                                       ),
-                                    )
-                                  ],
-                                ),
-                                child: IconButton(
-                                  icon: const Icon(Icons.notifications,
-                                      color: primaryColor),
-                                  onPressed: () {},
-                                ),
+                                    ),
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: const BorderRadius.all(
+                                          Radius.circular(15),
+                                        ),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey.shade300,
+                                            blurRadius: 15.0, // soften the shadow
+                                            spreadRadius: 5.0, //extend the shadow
+                                            offset: const Offset(
+                                              5.0, // Move to right 5  horizontally
+                                              5.0, // Move to bottom 5 Vertically
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                      child: IconButton(
+                                        icon: const Icon(Icons.notifications,
+                                            color: primaryColor),
+                                        onPressed: () {},
+                                      ),
+                                    ),
+                                  ]),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: TextField(
+                                      decoration: InputDecoration(
+                                        hintText: "What do you want to order?",
+                                        hintStyle: const TextStyle(
+                                          color: Color.fromARGB(100, 218, 98, 23),
+                                          fontSize: 12,
+                                        ),
+                                        filled: true,
+                                        fillColor:
+                                            const Color.fromARGB(20, 249, 169, 77),
+                                        prefixIcon: const Icon(Icons.search,
+                                            color: Color(0xFFDA6317)),
+                                        border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(15.0),
+                                          borderSide: BorderSide.none,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 10),
+                                  Container(
+                                    padding: const EdgeInsets.all(5),
+                                    decoration: const BoxDecoration(
+                                      color: Color.fromARGB(20, 249, 169, 77),
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(15),
+                                      ),
+                                    ),
+                                    child: IconButton(
+                                      icon: const Icon(
+                                        Icons.filter_list,
+                                        color: Color(0xFFDA6317),
+                                      ),
+                                      onPressed: () {},
+                                    ),
+                                  ),
+                                ],
                               ),
                             ]),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  hintText: "What do you want to order?",
-                                  hintStyle: const TextStyle(
-                                    color: Color.fromARGB(100, 218, 98, 23),
-                                    fontSize: 12,
-                                  ),
-                                  filled: true,
-                                  fillColor:
-                                      const Color.fromARGB(20, 249, 169, 77),
-                                  prefixIcon: const Icon(Icons.search,
-                                      color: Color(0xFFDA6317)),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(15.0),
-                                    borderSide: BorderSide.none,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            const SizedBox(width: 10),
-                            Container(
-                              padding: const EdgeInsets.all(5),
-                              decoration: const BoxDecoration(
-                                color: Color.fromARGB(20, 249, 169, 77),
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(15),
-                                ),
-                              ),
-                              child: IconButton(
-                                icon: const Icon(
-                                  Icons.filter_list,
-                                  color: Color(0xFFDA6317),
-                                ),
-                                onPressed: () {},
-                              ),
-                            ),
-                          ],
-                        ),
-                      ]),
-                ),
+                      ),
+                    ),
+                  ),
+            
+                  Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: screens[currentScreenIndex]),
+                ],
               ),
-
-              Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: screens[currentScreenIndex]),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
       bottomNavigationBar: BottomAppBar(
@@ -233,59 +237,5 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _buildRestaurantCard(String name, String time) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 16.0),
-      child: Container(
-        width: 100,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(12.0),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.1),
-              blurRadius: 10,
-              offset: const Offset(0, 5),
-            ),
-          ],
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(name, style: const TextStyle(fontWeight: FontWeight.bold)),
-            const SizedBox(height: 5),
-            Text(time, style: const TextStyle(color: Colors.grey)),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildMenuCard(String name, String price) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 16.0),
-      child: Container(
-        width: 100,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(12.0),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.1),
-              blurRadius: 10,
-              offset: const Offset(0, 5),
-            ),
-          ],
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(name, style: const TextStyle(fontWeight: FontWeight.bold)),
-            const SizedBox(height: 5),
-            Text(price, style: const TextStyle(color: Colors.green)),
-          ],
-        ),
-      ),
-    );
-  }
+ 
 }

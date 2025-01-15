@@ -139,7 +139,7 @@ class _UploadPhotoState extends State<UploadPhoto> {
                             ])
                           : Container(
                               width: double.infinity,
-                              height: 200,
+                              height: 350,
                               color: Colors.grey.shade50,
                               child: Center(
                                 child: GestureDetector(
@@ -180,7 +180,7 @@ class _UploadPhotoState extends State<UploadPhoto> {
                     onPressed: galleryFile == null
                         ? null
                         : () {
-                            Navigator.of(context).push(
+                            Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
                                   builder: (context) => const LocationPage()),
                             );

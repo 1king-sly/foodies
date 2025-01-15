@@ -5,7 +5,7 @@ import 'package:foodies/components/popular_restaurants.dart';
 import 'package:foodies/constants/constants.dart';
 
 class Home extends StatefulWidget {
-    final Function(int) setCurrentScreenIndex;
+  final Function(int) setCurrentScreenIndex;
 
   const Home({super.key, required this.setCurrentScreenIndex});
 
@@ -29,7 +29,7 @@ class _HomeState extends State<Home> {
                 Radius.circular(16),
               )),
           foregroundDecoration: const BoxDecoration(
-              color: Color.fromARGB(100, 21, 190, 120),
+              color: Color.fromARGB(50, 21, 190, 120),
               borderRadius: BorderRadius.all(
                 Radius.circular(16),
               )),
@@ -83,7 +83,7 @@ class _HomeState extends State<Home> {
 
         // Nearest Restaurant Section
         NearestRestaurants(
-          setCurrentScreenIndex:widget.setCurrentScreenIndex,
+          setCurrentScreenIndex: widget.setCurrentScreenIndex,
           children: [
             _buildRestaurantCard("Vegan Resto", "12 Mins"),
             _buildRestaurantCard("Healthy Food", "8 Mins"),
@@ -95,25 +95,23 @@ class _HomeState extends State<Home> {
         const SizedBox(height: 10),
 
         PopularMenu(
-                    setCurrentScreenIndex:widget.setCurrentScreenIndex,
-
-          children: [
-          _buildMenuCard("Green Noodle", "\$15"),
-          _buildMenuCard("Fried Chicken", "\$12"),
-          _buildMenuCard("Green Noodle", "\$15"),
-          _buildMenuCard("Fried Chicken", "\$12"),
-        ]),
+            setCurrentScreenIndex: widget.setCurrentScreenIndex,
+            children: [
+              _buildMenuCard("Green Noodle", "\$15"),
+              _buildMenuCard("Fried Chicken", "\$12"),
+              _buildMenuCard("Green Noodle", "\$15"),
+              _buildMenuCard("Fried Chicken", "\$12"),
+            ]),
         const SizedBox(height: 10),
 
         PopularRestaurants(
-                    setCurrentScreenIndex:widget.setCurrentScreenIndex,
-
-          children: [
-          _buildRestaurantCard("Vegan Resto", "12 Mins"),
-          _buildRestaurantCard("Healthy Food", "8 Mins"),
-          _buildRestaurantCard("Vegan Resto", "12 Mins"),
-          _buildRestaurantCard("Healthy Food", "8 Mins"),
-        ]),
+            setCurrentScreenIndex: widget.setCurrentScreenIndex,
+            children: [
+              _buildRestaurantCard("Vegan Resto", "12 Mins"),
+              _buildRestaurantCard("Healthy Food", "8 Mins"),
+              _buildRestaurantCard("Vegan Resto", "12 Mins"),
+              _buildRestaurantCard("Healthy Food", "8 Mins"),
+            ]),
       ],
     );
   }

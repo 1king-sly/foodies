@@ -76,6 +76,7 @@ class _LocationPageState extends State<LocationPage> {
     });
 
     debugPrint(position.toString());
+    debugPrint(locationMessage);
 
     return position!;
   }

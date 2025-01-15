@@ -40,6 +40,7 @@ class _BioPageState extends State<BioPage> {
               Padding(
                 padding: const EdgeInsets.all(15),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(children: [
                       Container(
@@ -68,7 +69,7 @@ class _BioPageState extends State<BioPage> {
                       height: 129,
                       child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               'Fill in your bio to get started',
