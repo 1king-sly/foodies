@@ -82,8 +82,7 @@ class _ProfileSuccessState extends State<ProfileSuccess> {
               child: TextButton(
                 onPressed: () {
                   Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(
-                        builder: (context) => const HomePage()),
+                    MaterialPageRoute(builder: (context) => const HomePage()),
                   );
                 },
                 child: const Text(
