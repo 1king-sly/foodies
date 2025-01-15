@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:foodies/constants/constants.dart';
+import 'package:foodies/pages/profile_success.dart';
 import 'package:geolocator/geolocator.dart';
 
 class LocationPage extends StatefulWidget {
@@ -11,6 +13,8 @@ class LocationPage extends StatefulWidget {
 }
 
 class _LocationPageState extends State<LocationPage> {
+  Position? position;
+
   Future<Position> _determinePosition() async {
     bool serviceEnabled;
     LocationPermission permission;
@@ -63,17 +67,17 @@ class _LocationPageState extends State<LocationPage> {
       distanceFilter: 100,
     );
 
-    Position position =
+    position =
         await Geolocator.getCurrentPosition(locationSettings: locationSettings);
 
     setState(() {
       locationMessage =
-          "Latitude: ${position.latitude}, Longitude: ${position.longitude}";
+          "Latitude: ${position?.latitude}, Longitude: ${position?.longitude}";
     });
 
-    debugPrint(locationMessage);
+    debugPrint(position.toString());
 
-    return position;
+    return position!;
   }
 
   @override
@@ -203,21 +207,26 @@ class _LocationPageState extends State<LocationPage> {
                               width: double.infinity,
                               height: 50,
                               decoration: BoxDecoration(
-                                  color: Colors.grey.shade300,
-                                  borderRadius: const BorderRadius.all(
-                                    Radius.circular(10),
-                                  )),
-                              child: Center(
-                                child: TextButton(
-                                    onPressed: _determinePosition,
-                                    child: const Text(
-                                      "Set Location",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black,
-                                      ),
-                                    )),
+                                color: Colors.grey.shade300,
+                                borderRadius: const BorderRadius.all(
+                                  Radius.circular(10),
+                                ),
                               ),
+                              child: TextButton(
+                                  onPressed: position == null
+                                      ? _determinePosition
+                                      : null,
+                                  child: Text(
+                                    position != null
+                                        ? "Location Captured"
+                                        : "Set Location",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: position != null
+                                          ? primaryColor
+                                          : Colors.black,
+                                    ),
+                                  )),
                             )
                           ]),
                     ),
@@ -241,12 +250,14 @@ class _LocationPageState extends State<LocationPage> {
                     ),
                   ),
                   child: TextButton(
-                    onPressed: () {
-                      // Navigator.of(context).pushReplacement(
-                      //   MaterialPageRoute(
-                      //       builder: (context) => const UploadPhoto()),
-                      // );
-                    },
+                    onPressed: position == null
+                        ? null
+                        : () {
+                            Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                  builder: (context) => const ProfileSuccess()),
+                            );
+                          },
                     child: const Text(
                       "Next",
                       style: TextStyle(
