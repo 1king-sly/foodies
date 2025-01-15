@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:foodies/components/nearest_restaurants.dart';
 import 'package:foodies/components/popular_menu.dart';
+import 'package:foodies/components/popular_restaurants.dart';
 import 'package:foodies/constants/constants.dart';
+import 'package:foodies/pages/home.dart';
+import 'package:foodies/pages/nearest_restaurant_page.dart';
+import 'package:foodies/pages/popular_menu_page.dart';
+import 'package:foodies/pages/popular_restaurants_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,6 +17,26 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
+  int currentScreenIndex = 0;
+  List<Widget> screens = [];
+
+  void setCurrentScreenIndex(int index) {
+    setState(() {
+      currentScreenIndex = index;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    screens = [
+      Home(setCurrentScreenIndex: setCurrentScreenIndex),
+      const NearestRestaurantPage(),
+      const PopularMenuPage(),
+      const PopularRestaurantsPage(),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -133,90 +158,9 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
 
-              // Promotion Banner
               Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Container(
-                  height: 150,
-                  decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/pattern2.jpg'),
-                        fit: BoxFit.cover,
-                      ),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(16),
-                      )),
-                  foregroundDecoration: const BoxDecoration(
-                      color: Color.fromARGB(100, 21, 190, 120),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(16),
-                      )),
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        top: 30,
-                        right: 5,
-                        child: Column(
-                          children: [
-                            const Text(
-                              "Special Deal For October",
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black,
-                              ),
-                            ),
-                            const SizedBox(height: 10),
-                            ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.white,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12.0),
-                                ),
-                              ),
-                              child: const Text(
-                                "Buy Now",
-                                style: TextStyle(
-                                  color: primaryColor,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Positioned(
-                        left: 10,
-                        top: 30,
-                        child: Image.asset(
-                          'assets/images/ice_cream.png', // Replace with your image path
-                          height: 100,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20),
-
-              // Nearest Restaurant Section
-              NearestRestaurants(
-                children: [
-                  _buildRestaurantCard("Vegan Resto", "12 Mins"),
-                  _buildRestaurantCard("Healthy Food", "8 Mins"),
-                  _buildRestaurantCard("Vegan Resto", "12 Mins"),
-                  _buildRestaurantCard("Healthy Food", "8 Mins"),
-                ],
-              ),
-
-              const SizedBox(height: 10),
-
-              PopularMenu(children: [
-                _buildMenuCard("Green Noodle", "\$15"),
-                _buildMenuCard("Fried Chicken", "\$12"),
-                _buildMenuCard("Green Noodle", "\$15"),
-                _buildMenuCard("Fried Chicken", "\$12"),
-              ]),
+                  padding: const EdgeInsets.all(16.0),
+                  child: screens[currentScreenIndex]),
             ],
           ),
         ),
@@ -236,6 +180,7 @@ class _HomePageState extends State<HomePage> {
                 onPressed: () {
                   setState(() {
                     currentIndex = 0;
+                    currentScreenIndex = 0;
                   });
                 },
                 icon: Icon(
@@ -277,7 +222,7 @@ class _HomePageState extends State<HomePage> {
                   });
                 },
                 icon: Icon(
-                  Icons.notifications,
+                  Icons.chat_outlined,
                   color:
                       currentIndex == 4 ? primaryColor : Colors.grey.shade400,
                   size: 25,

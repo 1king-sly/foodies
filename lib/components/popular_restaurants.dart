@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class PopularMenu extends StatefulWidget {
+class PopularRestaurants extends StatefulWidget {
       final Function(int) setCurrentScreenIndex;
 
   final List<Widget> children;
-  const PopularMenu({super.key, required this.children, required this.setCurrentScreenIndex});
+  const PopularRestaurants({super.key, required this.children, required this.setCurrentScreenIndex});
 
   @override
-  State<PopularMenu> createState() => _PopularMenuState();
+  State<PopularRestaurants> createState() => _PopularRestaurantsState();
 }
 
-class _PopularMenuState extends State<PopularMenu> {
+class _PopularRestaurantsState extends State<PopularRestaurants> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -29,8 +29,7 @@ class _PopularMenuState extends State<PopularMenu> {
                 ),
                 TextButton(
                   onPressed: () {
-                                        widget.setCurrentScreenIndex(2);
-
+                    widget.setCurrentScreenIndex(3);
                   },
                   child: const Text("View More"),
                 ),
