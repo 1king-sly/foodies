@@ -23,7 +23,7 @@ class _SignupPageState extends State<SignupPage> {
             height: 200,
             decoration: BoxDecoration(
               image: const DecorationImage(
-                image: AssetImage('assets/images/pattern2.jpg'),
+                image: AssetImage('assets/images/pattern2.webp'),
                 fit: BoxFit.cover,
               ),
               gradient: LinearGradient(
@@ -52,7 +52,7 @@ class _SignupPageState extends State<SignupPage> {
                           width: 200,
                           decoration: const BoxDecoration(
                             image: DecorationImage(
-                              image: AssetImage('assets/images/logo.png'),
+                              image: AssetImage('assets/images/logo.webp'),
                               fit: BoxFit.cover,
                             ),
                           ),

@@ -24,7 +24,7 @@ class _LoginPageState extends State<LoginPage> {
           height: 200,
           decoration: BoxDecoration(
             image: const DecorationImage(
-              image: AssetImage('assets/images/pattern2.jpg'),
+              image: AssetImage('assets/images/pattern2.webp'),
               fit: BoxFit.cover,
             ),
             gradient: LinearGradient(
@@ -53,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
                           width: 200,
                           decoration: const BoxDecoration(
                             image: DecorationImage(
-                              image: AssetImage('assets/images/logo.png'),
+                              image: AssetImage('assets/images/logo.webp'),
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -155,7 +155,7 @@ class _LoginPageState extends State<LoginPage> {
                                       shape: BoxShape.circle,
                                       image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/facebook.png'),
+                                            'assets/images/facebook.webp'),
                                         fit: BoxFit.cover,
                                       ))),
                               const Text("Facebook")
@@ -180,7 +180,7 @@ class _LoginPageState extends State<LoginPage> {
                                   shape: BoxShape.circle,
                                   image: DecorationImage(
                                     image:
-                                        AssetImage('assets/images/google.png'),
+                                        AssetImage('assets/images/google.webp'),
                                     fit: BoxFit.cover,
                                   ),
                                 ),

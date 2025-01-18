@@ -22,7 +22,7 @@ class _HomeState extends State<Home> {
           height: 150,
           decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/pattern2.jpg'),
+                image: AssetImage('assets/images/pattern2.webp'),
                 fit: BoxFit.cover,
               ),
               borderRadius: BorderRadius.all(
@@ -72,7 +72,7 @@ class _HomeState extends State<Home> {
                 left: 10,
                 top: 30,
                 child: Image.asset(
-                  'assets/images/ice_cream.png', // Replace with your image path
+                  'assets/images/ice_cream.webp', // Replace with your image path
                   height: 100,
                 ),
               ),

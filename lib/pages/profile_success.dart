@@ -42,7 +42,7 @@ class _ProfileSuccessState extends State<ProfileSuccess> {
             padding: const EdgeInsets.all(10),
             child:
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Image.asset('assets/images/success.png',
+              Image.asset('assets/images/success.webp',
                   width: 172, height: 162, fit: BoxFit.cover),
               const SizedBox(height: 10),
               const Text(

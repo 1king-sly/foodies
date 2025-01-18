@@ -24,7 +24,7 @@ class _UploadPhotoState extends State<UploadPhoto> {
           height: 200,
           decoration: BoxDecoration(
             image: const DecorationImage(
-              image: AssetImage('assets/images/pattern2.jpg'),
+              image: AssetImage('assets/images/pattern2.webp'),
               fit: BoxFit.cover,
             ),
             gradient: LinearGradient(
@@ -112,7 +112,7 @@ class _UploadPhotoState extends State<UploadPhoto> {
                                       getImage(ImageSource.gallery);
                                     },
                                     child: Image.asset(
-                                        'assets/images/gallery.png'),
+                                        'assets/images/gallery.webp'),
                                   ),
                                 ),
                               ),
@@ -132,7 +132,7 @@ class _UploadPhotoState extends State<UploadPhoto> {
                                       getImage(ImageSource.camera);
                                     },
                                     child:
-                                        Image.asset('assets/images/camera.png'),
+                                        Image.asset('assets/images/camera.webp'),
                                   ),
                                 ),
                               ),

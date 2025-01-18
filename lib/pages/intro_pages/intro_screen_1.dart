@@ -17,7 +17,7 @@ class IntroScreen1 extends StatelessWidget {
                 height: 435,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage('assets/images/illustration.png'),
+                      image: AssetImage('assets/images/illustration.webp'),
                       fit: BoxFit.cover),
                 ),
               ),
