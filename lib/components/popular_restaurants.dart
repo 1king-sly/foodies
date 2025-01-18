@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 class PopularRestaurants extends StatefulWidget {
-      final Function(int) setCurrentScreenIndex;
+  final Function(int) setCurrentScreenIndex;
 
   final List<Widget> children;
-  const PopularRestaurants({super.key, required this.children, required this.setCurrentScreenIndex});
+  const PopularRestaurants(
+      {super.key, required this.children, required this.setCurrentScreenIndex});
 
   @override
   State<PopularRestaurants> createState() => _PopularRestaurantsState();
@@ -17,24 +18,24 @@ class _PopularRestaurantsState extends State<PopularRestaurants> {
       height: 200,
       child: Column(
         children: [
-                   Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
-                  "Popular Menu",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text(
+                "Popular Restaurants",
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
                 ),
-                TextButton(
-                  onPressed: () {
-                    widget.setCurrentScreenIndex(3);
-                  },
-                  child: const Text("View More"),
-                ),
-              ],
-            ),
+              ),
+              TextButton(
+                onPressed: () {
+                  widget.setCurrentScreenIndex(3);
+                },
+                child: const Text("View More"),
+              ),
+            ],
+          ),
           Expanded(
             child: ListView.separated(
               scrollDirection: Axis.horizontal,

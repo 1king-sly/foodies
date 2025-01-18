@@ -10,10 +10,12 @@ class PopularRestaurantsPage extends StatefulWidget {
 class _PopularRestaurantsPageState extends State<PopularRestaurantsPage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body:Center(
-        child:Text("Popular restaurants page"),
-      )
+    return const Column(
+      children: [
+        Center(
+          child: Text("Popular Restaurants"),
+        )
+      ],
     );
   }
 }

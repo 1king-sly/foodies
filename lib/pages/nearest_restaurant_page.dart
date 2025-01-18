@@ -10,10 +10,12 @@ class NearestRestaurantPage extends StatefulWidget {
 class _NearestRestaurantPageState extends State<NearestRestaurantPage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body:Center(
-        child:Text("Neared Restaurants"),
-      )
+    return const Column(
+      children: [
+        Center(
+          child: Text("Neared Restaurants"),
+        )
+      ],
     );
   }
 }

@@ -10,10 +10,12 @@ class PopularMenuPage extends StatefulWidget {
 class _PopularMenuPageState extends State<PopularMenuPage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body:Center(
-        child:Text('Popular Menu pages')
-      ),
+    return const Column(
+      children: [
+        Center(
+          child: Text("Popular Menus page"),
+        )
+      ],
     );
   }
 }
