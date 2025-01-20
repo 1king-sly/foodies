@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 
 class PopularMenu extends StatefulWidget {
       final Function(int) setCurrentScreenIndex;
-
-  final List<Widget> children;
-  const PopularMenu({super.key, required this.children, required this.setCurrentScreenIndex});
+  const PopularMenu({super.key, required this.setCurrentScreenIndex});
 
   @override
   State<PopularMenu> createState() => _PopularMenuState();
@@ -40,11 +38,35 @@ class _PopularMenuState extends State<PopularMenu> {
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               itemBuilder: (BuildContext context, int index) {
-                return Row(children: widget.children);
+                return Padding(
+      padding: const EdgeInsets.only(right: 16.0),
+      child: Container(
+        width: 200,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12.0),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.1),
+              blurRadius: 10,
+              offset: const Offset(0, 5),
+            ),
+          ],
+        ),
+        child:const  Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('name', style:  TextStyle(fontWeight: FontWeight.bold)),
+             SizedBox(height: 5),
+            Text('12', style:  TextStyle(color: Colors.green)),
+          ],
+        ),
+      ),
+    );
               },
               separatorBuilder: (BuildContext context, int index) =>
                   const SizedBox(width: 10),
-              itemCount: widget.children.length,
+              itemCount: 10,
             ),
           ),
         ],
