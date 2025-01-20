@@ -29,9 +29,9 @@ class _HomePageState extends State<HomePage> {
 
     screens = [
       Home(setCurrentScreenIndex: setCurrentScreenIndex),
-      const NearestRestaurantPage(),
-      const PopularMenuPage(),
-      const PopularRestaurantsPage(),
+       NearestRestaurantPage(setCurrentScreenIndex: setCurrentScreenIndex,),
+       PopularMenuPage(setCurrentScreenIndex: setCurrentScreenIndex),
+       PopularRestaurantsPage(setCurrentScreenIndex: setCurrentScreenIndex),
     ];
   }
 
