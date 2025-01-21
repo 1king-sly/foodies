@@ -84,19 +84,16 @@ class _HomeState extends State<Home> {
 
         // Nearest Restaurant Section
         NearestRestaurants(
-          setCurrentScreenIndex: widget.setCurrentScreenIndex,
  
         ),
 
         const SizedBox(height: 10),
 
         PopularMenu(
-            setCurrentScreenIndex: widget.setCurrentScreenIndex,
       ),
         const SizedBox(height: 10),
 
         PopularRestaurants(
-            setCurrentScreenIndex: widget.setCurrentScreenIndex,
 ),
       ],
     );

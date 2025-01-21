@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
 class PopularRestaurantsPage extends StatefulWidget {
-  final Function(int) setCurrentScreenIndex;
 
   const PopularRestaurantsPage(
-      {super.key, required this.setCurrentScreenIndex});
+      {super.key});
 
   @override
   State<PopularRestaurantsPage> createState() => _PopularRestaurantsPageState();
@@ -13,15 +12,22 @@ class PopularRestaurantsPage extends StatefulWidget {
 class _PopularRestaurantsPageState extends State<PopularRestaurantsPage> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
+    return CustomScrollView(
+      slivers: [
+
+        const SliverAppBar(
+      pinned: true,
+      expandedHeight: 250.0,
+      flexibleSpace: FlexibleSpaceBar(
+        title: Text('Demo'),
+      ),
+    ),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
            GestureDetector(
             onTap: () {
               setState(() {
-                widget.setCurrentScreenIndex(0);
               });
             },
             child: const Icon(Icons.arrow_back_ios),

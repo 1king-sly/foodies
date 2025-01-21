@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
 class NearestRestaurantPage extends StatefulWidget {
-  final Function(int) setCurrentScreenIndex;
 
-  const NearestRestaurantPage({super.key, required this.setCurrentScreenIndex});
+  const NearestRestaurantPage({super.key});
 
   @override
   State<NearestRestaurantPage> createState() => _NearestRestaurantPageState();
@@ -19,7 +18,6 @@ class _NearestRestaurantPageState extends State<NearestRestaurantPage> {
           GestureDetector(
             onTap: () {
               setState(() {
-                widget.setCurrentScreenIndex(0);
               });
             },
             child: const Icon(Icons.arrow_back_ios),

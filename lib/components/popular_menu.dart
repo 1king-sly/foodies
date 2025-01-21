@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:foodies/pages/popular_menu_page.dart';
 
 class PopularMenu extends StatefulWidget {
-      final Function(int) setCurrentScreenIndex;
-  const PopularMenu({super.key, required this.setCurrentScreenIndex});
+  const PopularMenu({super.key});
 
   @override
   State<PopularMenu> createState() => _PopularMenuState();
@@ -27,7 +27,8 @@ class _PopularMenuState extends State<PopularMenu> {
                 ),
                 TextButton(
                   onPressed: () {
-                                        widget.setCurrentScreenIndex(2);
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const PopularMenuPage()));
 
                   },
                   child: const Text("View More"),

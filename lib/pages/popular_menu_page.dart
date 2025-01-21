@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
 class PopularMenuPage extends StatefulWidget {
-  final Function(int) setCurrentScreenIndex;
 
-  const PopularMenuPage({super.key, required this.setCurrentScreenIndex});
+  const PopularMenuPage({super.key});
 
   @override
   State<PopularMenuPage> createState() => _PopularMenuPageState();
@@ -20,7 +19,6 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
            GestureDetector(
             onTap: () {
               setState(() {
-                widget.setCurrentScreenIndex(0);
               });
             },
             child: const Icon(Icons.arrow_back_ios),
