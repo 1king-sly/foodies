@@ -16,7 +16,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Wrap(
       children: [
         Container(
           height: 150,
@@ -83,22 +83,15 @@ class _HomeState extends State<Home> {
         const SizedBox(height: 20),
 
         // Nearest Restaurant Section
-        NearestRestaurants(
- 
-        ),
+        const NearestRestaurants(),
 
         const SizedBox(height: 10),
 
-        PopularMenu(
-      ),
+        const PopularMenu(),
         const SizedBox(height: 10),
 
-        PopularRestaurants(
-),
+        const PopularRestaurants(),
       ],
     );
   }
-
-
- 
 }

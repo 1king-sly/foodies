@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:foodies/pages/home_page.dart';
 
 class NearestRestaurantPage extends StatefulWidget {
-
   const NearestRestaurantPage({super.key});
 
   @override
@@ -17,8 +17,7 @@ class _NearestRestaurantPageState extends State<NearestRestaurantPage> {
         children: [
           GestureDetector(
             onTap: () {
-              setState(() {
-              });
+              setState(() {});
             },
             child: const Icon(Icons.arrow_back_ios),
           ),
@@ -58,10 +57,18 @@ class _NearestRestaurantPageState extends State<NearestRestaurantPage> {
             );
           })
     ];
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        children: children,
+    return Scaffold(
+      body: NestedScrollView(
+        headerSliverBuilder: (BuildContext context, bool innerBoxScrolled) {
+          return <Widget>[
+            const CustomAppBarOne(),
+            const CustomAppBarTwo(),
+            const CustomAppBarThree(),
+          ];
+        },
+        body: const Center(
+          child: Text("Hello Sliver AppBar"),
+        ),
       ),
     );
   }
