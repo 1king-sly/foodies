@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foodies/constants/constants.dart';
+import 'package:foodies/components/custom_app_bars.dart';
 
 class PopularRestaurantsPage extends StatefulWidget {
   const PopularRestaurantsPage({super.key});
@@ -11,108 +11,54 @@ class PopularRestaurantsPage extends StatefulWidget {
 class _PopularRestaurantsPageState extends State<PopularRestaurantsPage> {
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverAppBar(
-          pinned: true,
-          floating: false,
-          expandedHeight: 100.0,
-          // automaticallyImplyLeading: false,
-          flexibleSpace: FlexibleSpaceBar(
-              centerTitle: true,
-              title: const Text(
-                "Your Popular restaurants",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 16.0,
-                ),
-              ),
-              stretchModes: const [StretchMode.fadeTitle],
-              background: Image.asset(
-                "assets/images/pattern2.webp",
-                fit: BoxFit.cover,
-              )),
+    return Scaffold(
+      body: NestedScrollView(
+        headerSliverBuilder: (BuildContext context, bool innerBoxScrolled) {
+          return <Widget>[
+            const CustomAppBarTwo(
+              text: 'The Popular Restaurants',
+            ),
+            const CustomAppBarThree(),
+          ];
+        },
+        body: SingleChildScrollView(
+          child: Padding(
+              padding: const EdgeInsets.all(8),
+              child: GridView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 0.78,
+                      crossAxisSpacing: 20,
+                      mainAxisSpacing: 20),
+                  itemCount: 6,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(12.0),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.1),
+                            blurRadius: 10,
+                            offset: const Offset(0, 5),
+                          ),
+                        ],
+                      ),
+                      child: const Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('name',
+                              style: TextStyle(fontWeight: FontWeight.bold)),
+                          SizedBox(height: 5),
+                          Text('12', style: TextStyle(color: Colors.green)),
+                        ],
+                      ),
+                    );
+                  })),
         ),
-        // Row(
-        //   mainAxisAlignment: MainAxisAlignment.start,
-        //   children: [
-        //    GestureDetector(
-        //     onTap: () {
-        //       setState(() {
-        //       });
-        //     },
-        //     child: const Icon(Icons.arrow_back_ios),
-        //   ),
-        //   ],
-        // ),
-
-        SliverGrid(
-          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: 200.0,
-            mainAxisSpacing: 10.0,
-            crossAxisSpacing: 10.0,
-            childAspectRatio: 0.8,
-          ),
-          delegate: SliverChildBuilderDelegate(
-            (BuildContext context, int index) {
-              return Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12.0),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.1),
-                      blurRadius: 10,
-                      offset: const Offset(0, 5),
-                    ),
-                  ],
-                ),
-                child: const Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('name', style: TextStyle(fontWeight: FontWeight.bold)),
-                    SizedBox(height: 5),
-                    Text('12', style: TextStyle(color: Colors.green)),
-                  ],
-                ),
-              );
-            },
-            childCount: 20,
-          ),
-        ),
-        // GridView.builder(
-        //     physics: const NeverScrollableScrollPhysics(),
-        //     shrinkWrap: true,
-        //     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        //         crossAxisCount: 2,
-        //         childAspectRatio: 0.78,
-        //         crossAxisSpacing: 20,
-        //         mainAxisSpacing: 20),
-        //     itemCount: 6,
-        //     itemBuilder: (context, index) {
-        //       return Container(
-        //         decoration: BoxDecoration(
-        //           color: Colors.white,
-        //           borderRadius: BorderRadius.circular(12.0),
-        //           boxShadow: [
-        //             BoxShadow(
-        //               color: Colors.grey.withOpacity(0.1),
-        //               blurRadius: 10,
-        //               offset: const Offset(0, 5),
-        //             ),
-        //           ],
-        //         ),
-        //         child: const Column(
-        //           mainAxisAlignment: MainAxisAlignment.center,
-        //           children: [
-        //             Text('name', style: TextStyle(fontWeight: FontWeight.bold)),
-        //             SizedBox(height: 5),
-        //             Text('12', style: TextStyle(color: Colors.green)),
-        //           ],
-        //         ),
-        //       );
-        //     })
-      ],
+      ),
     );
   }
 }
