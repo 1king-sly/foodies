@@ -24,7 +24,8 @@ ThemeData _buildThemeData() {
     pageTransitionsTheme: const PageTransitionsTheme(
       builders: {
         TargetPlatform.android: _CustomPageTransitionBuilder(),
-        TargetPlatform.iOS: CupertinoPageTransitionsBuilder(), // iOS-style transition
+        TargetPlatform.iOS:
+            CupertinoPageTransitionsBuilder(), // iOS-style transition
       },
     ),
     colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFFFEFEFF)),

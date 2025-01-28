@@ -20,7 +20,7 @@ class _BioPageState extends State<BioPage> {
           height: 200,
           decoration: BoxDecoration(
             image: const DecorationImage(
-              image: AssetImage('assets/images/pattern2.jpg'),
+              image: AssetImage('assets/images/pattern2.webp'),
               fit: BoxFit.cover,
             ),
             gradient: LinearGradient(
