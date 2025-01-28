@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:foodies/pages/intro_pages/intro_screens.dart';
 
 void main() {
+    SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
   runApp(const FoodiesApp());
 }
 
