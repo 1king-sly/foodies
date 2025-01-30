@@ -11,7 +11,6 @@ class NearestRestaurantPage extends StatefulWidget {
 class _NearestRestaurantPageState extends State<NearestRestaurantPage> {
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxScrolled) {
@@ -47,9 +46,10 @@ class _NearestRestaurantPageState extends State<NearestRestaurantPage> {
                           ),
                         ],
                       ),
-                      child: const Column(
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+                          Image.asset('assets/images/vegan.webp'),
                           Text('name',
                               style: TextStyle(fontWeight: FontWeight.bold)),
                           SizedBox(height: 5),

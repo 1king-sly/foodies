@@ -12,14 +12,14 @@ class _PopularRestaurantsState extends State<PopularRestaurants> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 200,
+      height: 250,
       child: Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Text(
-                "Popular Restaurants",
+                "Nearest Restaurant",
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -53,9 +53,10 @@ class _PopularRestaurantsState extends State<PopularRestaurants> {
                         ),
                       ],
                     ),
-                    child: const Column(
+                    child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        Image.asset('assets/images/vegan.webp'),
                         Text("name",
                             style: TextStyle(fontWeight: FontWeight.bold)),
                         SizedBox(height: 5),

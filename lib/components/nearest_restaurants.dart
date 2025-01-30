@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:foodies/pages/nearest_restaurant_page.dart';
 
 class NearestRestaurants extends StatefulWidget {
-
   const NearestRestaurants({super.key});
 
   @override
@@ -13,7 +12,7 @@ class _NearestRestaurantsState extends State<NearestRestaurants> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 200,
+      height: 250,
       child: Column(
         children: [
           Row(
@@ -54,9 +53,10 @@ class _NearestRestaurantsState extends State<NearestRestaurants> {
                         ),
                       ],
                     ),
-                    child: const Column(
+                    child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        Image.asset('assets/images/vegan.webp'),
                         Text("name",
                             style: TextStyle(fontWeight: FontWeight.bold)),
                         SizedBox(height: 5),

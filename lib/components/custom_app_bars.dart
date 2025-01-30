@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodies/constants/constants.dart';
 
-
 class CustomAppBarOne extends StatelessWidget {
   const CustomAppBarOne({super.key});
 
@@ -72,13 +71,9 @@ class _CustomAppBarTwoState extends State<CustomAppBarTwo> {
   Widget build(BuildContext context) {
     return SliverAppBar(
       leading: Container(),
-      title: Container(),
-      titleSpacing: 30,
       pinned: true,
       backgroundColor: Colors.white,
-      expandedHeight: 90,
-      floating: true,
-      snap: true,
+      surfaceTintColor: Colors.white,
       elevation: 0,
       flexibleSpace: Padding(
         padding: const EdgeInsets.all(
@@ -140,9 +135,8 @@ class _CustomAppBarTwoState extends State<CustomAppBarTwo> {
         ),
       ),
       bottom: PreferredSize(
-        // Add this code
-        preferredSize: const Size.fromHeight(-8), // Add this code
-        child: Container(), // Add this code
+        preferredSize: const Size.fromHeight(25),
+        child: Container(),
       ),
     );
   }
@@ -160,66 +154,63 @@ class _CustomAppBarThreeState extends State<CustomAppBarThree> {
   Widget build(BuildContext context) {
     return SliverAppBar(
       leading: Container(),
-      elevation: 10,
+      elevation: 0,
       bottom: const PreferredSize(
-        // Add this code
-        preferredSize: Size.fromHeight(-20), // Add this code
-        child: Text(''), // Add this code
+        preferredSize: Size.fromHeight(-20),
+        child: Text(''),
       ),
       backgroundColor: Colors.white,
+      surfaceTintColor: Colors.white,
       pinned: true,
       flexibleSpace: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 10.0,
         ),
         child: FlexibleSpaceBar(
-          background: Stack(
-            clipBehavior: Clip.none,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 15),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: "What do you want to order?",
-                          hintStyle: const TextStyle(
-                            color: Color.fromARGB(100, 218, 98, 23),
-                            fontSize: 12,
-                          ),
-                          filled: true,
-                          fillColor: const Color.fromARGB(20, 249, 169, 77),
-                          prefixIcon: const Icon(Icons.search,
-                              color: Color(0xFFDA6317)),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15.0),
-                            borderSide: BorderSide.none,
-                          ),
+          background: SizedBox(
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: "What do you want to order?",
+                        hintStyle: const TextStyle(
+                          color: Color.fromARGB(100, 218, 98, 23),
+                          fontSize: 12,
+                        ),
+                        filled: true,
+                        fillColor: const Color.fromARGB(20, 249, 169, 77),
+                        prefixIcon:
+                            const Icon(Icons.search, color: Color(0xFFDA6317)),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15.0),
+                          borderSide: BorderSide.none,
                         ),
                       ),
                     ),
-                    const SizedBox(width: 10),
-                    Container(
-                      padding: const EdgeInsets.all(5),
-                      decoration: const BoxDecoration(
-                        color: Color.fromARGB(20, 249, 169, 77),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(15),
-                        ),
-                      ),
-                      child: IconButton(
-                        icon: const Icon(
-                          Icons.filter_list,
-                          color: Color(0xFFDA6317),
-                        ),
-                        onPressed: () {},
+                  ),
+                  const SizedBox(width: 10),
+                  Container(
+                    padding: const EdgeInsets.all(5),
+                    decoration: const BoxDecoration(
+                      color: Color.fromARGB(20, 249, 169, 77),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(15),
                       ),
                     ),
-                  ],
-                ),
+                    child: IconButton(
+                      icon: const Icon(
+                        Icons.filter_list,
+                        color: Color(0xFFDA6317),
+                      ),
+                      onPressed: () {},
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
       ),
