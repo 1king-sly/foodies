@@ -5,23 +5,33 @@ class InputComponent extends StatefulWidget {
   final bool? isObscured;
   final String hintText;
   final Widget? prefixIcon;
+  final bool? isPassword;
   final TextInputType? keyboardType;
   const InputComponent(
       {super.key,
       this.isObscured,
       required this.hintText,
       this.prefixIcon,
-      this.keyboardType});
+      this.keyboardType, this.isPassword});
 
   @override
   State<InputComponent> createState() => _InputComponentState();
 }
 
 class _InputComponentState extends State<InputComponent> {
+  late bool isObscured;
+  late bool isPassword;
+
+
+  @override
+  void initState() {
+    super.initState();
+    isObscured = widget.isPassword ?? false;
+    isPassword = widget.isPassword ?? false;
+  }
+
   @override
   Widget build(BuildContext context) {
-    bool isObscured = widget.isObscured ?? false;
-
     return TextField(
       keyboardType: widget.keyboardType ?? TextInputType.text,
       obscureText: isObscured,
@@ -42,7 +52,7 @@ class _InputComponentState extends State<InputComponent> {
             borderRadius: BorderRadius.all(Radius.circular(20)),
             borderSide: BorderSide(color: primaryColor),
           ),
-          suffixIcon: isObscured
+          suffixIcon: isPassword
               ? GestureDetector(
                   onTap: () {
                     setState(() {

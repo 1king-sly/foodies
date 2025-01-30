@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodies/components/input.dart';
 import 'package:foodies/constants/constants.dart';
 import 'package:foodies/pages/bio_page.dart';
 import 'package:foodies/pages/signup_page.dart';
@@ -19,25 +20,25 @@ class _LoginPageState extends State<LoginPage> {
       resizeToAvoidBottomInset: false,
       body: Stack(
         children: [
-    Container(
-          width: double.infinity,
-          height: 200,
-          decoration: BoxDecoration(
-            image: const DecorationImage(
-              image: AssetImage('assets/images/pattern2.webp'),
-              fit: BoxFit.cover,
-            ),
-            gradient: LinearGradient(
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-              colors: [
-                Colors.grey.shade100,
-                // Colors.white,
-                Colors.white,
-              ],
+          Container(
+            width: double.infinity,
+            height: 200,
+            decoration: BoxDecoration(
+              image: const DecorationImage(
+                image: AssetImage('assets/images/pattern2.webp'),
+                fit: BoxFit.cover,
+              ),
+              gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                colors: [
+                  Colors.grey.shade100,
+                  // Colors.white,
+                  Colors.white,
+                ],
+              ),
             ),
           ),
-        ),
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.all(20),
@@ -68,60 +69,16 @@ class _LoginPageState extends State<LoginPage> {
                       ]),
                 ),
                 const SizedBox(height: 30),
-                TextField(
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.all(15),
-                    hintText: "Email",
-                    hintStyle: TextStyle(
-                      color: Colors.grey.shade500,
-                      fontSize: 16,
-                    ),
-                    filled: true,
-                    fillColor: Colors.white,
-                    enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey.shade300),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(20))),
-                    focusedBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(color: primaryColor),
-                      borderRadius: BorderRadius.all(Radius.circular(20)),
-                    ),
-                  ),
+                InputComponent(
+                  hintText: 'Email',
                 ),
                 const SizedBox(height: 20),
-                TextField(
-                  obscureText: isObscured,
-                  decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.all(15),
-                    hintText: "Password",
-                    hintStyle: TextStyle(
-                      color: Colors.grey.shade500,
-                      fontSize: 16,
-                    ),
-                    filled: true,
-                    fillColor: Colors.white,
-                    enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey.shade300),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(20))),
-                    focusedBorder: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(20)),
-                      borderSide: BorderSide(color: primaryColor),
-                    ),
-                    suffixIcon: GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          isObscured = isObscured ? false : true;
-                        });
-                      },
-                      child: isObscured
-                          ? Icon(Icons.visibility, color: Colors.grey.shade500)
-                          : Icon(Icons.visibility_off,
-                              color: Colors.grey.shade500),
-                    ),
-                  ),
+
+                InputComponent(
+                  hintText: 'Password',
+                  isPassword:true,
                 ),
+
                 const SizedBox(height: 20),
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,

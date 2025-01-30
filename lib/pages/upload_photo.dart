@@ -5,7 +5,6 @@ import 'package:foodies/components/service_locator.dart';
 import 'package:foodies/pages/location_page.dart';
 import 'package:foodies/permission/permission_service.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 class UploadPhoto extends StatefulWidget {
   const UploadPhoto({super.key});
@@ -19,20 +18,6 @@ class _UploadPhotoState extends State<UploadPhoto> {
   final picker = ImagePicker();
 
   PermissionService get permissionService => getIt<PermissionService>();
-
-  Future<bool> _handleImageUploadPermissions(
-      BuildContext context, ImageSource? imageSource) async {
-    if (imageSource == null) {
-      return false;
-    }
-    if (imageSource == ImageSource.camera) {
-      return await permissionService.handleCameraPermission(context);
-    } else if (imageSource == ImageSource.gallery) {
-      return await permissionService.handlePhotosPermission(context);
-    } else {
-      return false;
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -225,106 +210,18 @@ class _UploadPhotoState extends State<UploadPhoto> {
   Future getImage(
     ImageSource img,
   ) async {
-    if (img == ImageSource.camera) {
-      await Permission.camera.request();
-      PermissionStatus cameraStatus = await Permission.camera.request();
+    final pickedFile = await picker.pickImage(source: img);
+    XFile? xfilePick = pickedFile;
 
-      if (cameraStatus == PermissionStatus.granted) {
-        final pickedFile = await picker.pickImage(source: img);
-        XFile? xfilePick = pickedFile;
-
-        setState(
-          () {
-            if (xfilePick != null) {
-              galleryFile = File(pickedFile!.path);
-            } else {
-              ScaffoldMessenger.of(context).showSnackBar(// is this context <<<
-                  const SnackBar(content: Text('Nothing is selected')));
-            }
-          },
-        );
-      }
-      if (cameraStatus == PermissionStatus.denied) {
-        debugPrint(
-            '😰 😰 😰 😰 😰 😰 Permission to camera was not granted! 😰 😰 😰 😰 😰 😰');
-        await showDialog(
-          context: context,
-          builder: (BuildContext context) => AlertDialog(
-            title: const Text('Camera Permission'),
-            content: const Text(
-                'Camera permission should Be granted to use this feature, would you like to go to app settings to give camera permission?'),
-            actions: [
-              TextButton(
-                child: const Text('Cancel'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-              TextButton(
-                child: const Text('Ok'),
-                onPressed: () {
-                  openAppSettings();
-                  Navigator.of(context).pop();
-                },
-              ),
-            ],
-          ),
-        );
-      }
-      if (cameraStatus == PermissionStatus.permanentlyDenied) {
-        openAppSettings();
-      }
-    }
-    if (img == ImageSource.gallery) {
-
-      await Permission.photos.request();
-      PermissionStatus galleryStatus = await Permission.photos.request();
-
-      if (galleryStatus == PermissionStatus.granted) {
-        final pickedFile = await picker.pickImage(source: img);
-        XFile? xfilePick = pickedFile;
-
-        setState(
-          () {
-            if (xfilePick != null) {
-              galleryFile = File(pickedFile!.path);
-            } else {
-              ScaffoldMessenger.of(context).showSnackBar(// is this context <<<
-                  const SnackBar(content: Text('Nothing is selected')));
-            }
-          },
-        );
-      }
-      if (galleryStatus == PermissionStatus.denied) {
-        debugPrint(
-            '😰 😰 😰 😰 😰 😰 Permission to storage was not granted! 😰 😰 😰 😰 😰 😰');
-        await showDialog(
-          context: context,
-          builder: (BuildContext context) => AlertDialog(
-            title: const Text('Gallery Permission'),
-            content: const Text(
-                'Storage  permission should Be granted to use this feature, would you like to go to app settings to give camera permission?'),
-            actions: [
-              TextButton(
-                child: const Text('Cancel'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-              TextButton(
-                child: const Text('Ok'),
-                onPressed: () {
-                  openAppSettings();
-                  Navigator.of(context).pop();
-                },
-              ),
-            ],
-          ),
-        );
-      }
-      if (galleryStatus == PermissionStatus.permanentlyDenied) {
-        openAppSettings();
-      }
-    }
+    setState(
+      () {
+        if (xfilePick != null) {
+          galleryFile = File(pickedFile!.path);
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(// is this context <<<
+              const SnackBar(content: Text('Nothing is selected')));
+        }
+      },
+    );
   }
 }

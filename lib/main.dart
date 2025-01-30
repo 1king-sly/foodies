@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:foodies/pages/intro_pages/intro_screens.dart';
 
 void main() {
